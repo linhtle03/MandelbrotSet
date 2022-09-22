@@ -1,1 +1,1 @@
-# CISP400_SFML
+# MandelbrotSet
