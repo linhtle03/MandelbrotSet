@@ -16,17 +16,22 @@ int main ()
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
 
+	//Calculate the aspect ratio of the monitor
 	float aspectRatio = resolution.x/resolution.y;
 
 	VideoMode vm(resolution.x, resolution.y);
 	RenderWindow window(vm, "Mandelbrot", Style::Default);
 
+	//Construct a VertexArray to draw color for each pixel
     vector<VertexArray> vertexArrays;
 
     std::srand(time(0));
 
     while (window.isOpen())
 	{
+		Vertex pointf(Vector2f(resolution.x, resolution.y), Color::Red);
+		window.draw(&pointf, 1, Points);
+		window.display();
 		Event event;
         while (window.pollEvent(event))
         {
