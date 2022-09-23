@@ -18,6 +18,11 @@ int main ()
 
     vector<VertexArray> vertexArrays;
 
-    window.display();
+    std::srand(time(0));
+
+    while (window.isOpen())
+    {
+		window.display();
+	}
     return 0;
 }
