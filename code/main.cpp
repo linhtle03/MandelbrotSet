@@ -1,23 +1,21 @@
 // abs complex example
-#include <iostream>     // std::cout
-#include <complex>      // std::complex, std::abs
+#include <SFML/Graphics.hpp>
+#include "ComplexPlane.h"
 using namespace std;
+#include <complex.h>
 
 int main ()
 {
-    double re = -0.77568377;
-    double im = 0.13646737;
-    complex<double> c (re, im);
-    complex<double> z (0,0);
-    cout << "c = " << c << "\t";
-    cout << "|c| = " << abs(c) << endl;
-    cout << "Real component of c: " << c.real() << endl;
-    cout << "Imaginary component of c: " << c.imag() << endl;
-    z = z*z + c;
-    cout << "z_2 = " << z << "\t";
-    cout << "|z_2| = " << abs(z) << endl;
-    z = z*z + c;
-    cout << "z_3 = " << z << "\t";
-    cout << "|z_3| = " << abs(z) << endl;
+    Vector2f resolution;
+	resolution.x = VideoMode::getDesktopMode().width;
+	resolution.y = VideoMode::getDesktopMode().height;
+
+	RenderWindow window(VideoMode(resolution.x, resolution.y), 
+		"Mandelbrot Set", Style::Default);
+
+	// Create a an SFML View for the main action
+	View mainView(sf::FloatRect(0, 0, resolution.x, resolution.y));
+
+    window.display();
     return 0;
 }
