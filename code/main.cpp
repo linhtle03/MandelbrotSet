@@ -1,4 +1,3 @@
-// abs complex example
 #include <SFML/Graphics.hpp>
 #include "ComplexPlane.h"
 using namespace std;
@@ -7,6 +6,7 @@ using namespace std;
 int main ()
 {
     Vector2f resolution;
+
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
 
