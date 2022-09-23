@@ -1,10 +1,16 @@
+// Include important C++ libraries/User defined header files here
 #include <SFML/Graphics.hpp>
-#include "ComplexPlane.h"
-using namespace std;
+#include <iostream>
 #include <complex.h>
+#include "ComplexPlane.h"
+
+// Make code easier to type with "using namespace"
+using namespace sf;
+using namespace std;
 
 int main ()
 {
+	// Get the screen resolution and create an SFML window
     Vector2f resolution;
 
 	resolution.x = VideoMode::getDesktopMode().width;
