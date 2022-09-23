@@ -10,11 +10,10 @@ int main ()
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
 
-	RenderWindow window(VideoMode(resolution.x, resolution.y), 
-		"Mandelbrot Set", Style::Default);
+	float aspectRatio = resolution.x/resolution.y;
 
-	// Create a an SFML View for the main action
-	View mainView(sf::FloatRect(0, 0, resolution.x, resolution.y));
+	VideoMode vm(resolution.x, resolution.y);
+	RenderWindow window(vm, "Mandelbrot", Style::Default);
 
     vector<VertexArray> vertexArrays;
 
@@ -22,17 +21,11 @@ int main ()
 
     while (window.isOpen())
 	{
-		sf::Event event;
-		while (window.pollEvent(event))
+		if (Keyboard::isKeyPressed(Keyboard::Escape))
 		{
-			// catch the resize events
-			if (event.type == sf::Event::Resized)
-			{
-				// update the view to the new size of the window
-				sf::FloatRect visibleArea(0.f, 0.f, event.size.width, event.size.height);
-				window.setView(sf::View(visibleArea));
-			}
+			window.close();
 		}
+		window.clear();
 		window.display();
 	}
     return 0;
