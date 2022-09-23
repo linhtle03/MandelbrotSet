@@ -27,11 +27,33 @@ int main ()
 
     while (window.isOpen())
 	{
-		if (Keyboard::isKeyPressed(Keyboard::Escape))
-		{
-			window.close();
+		Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == Event::Closed)
+            {
+                window.close();
+            }
+
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+				if (event.mouseButton.button == Mouse::Left)
+				{
+					//zoom in
+					cout << "Something should be calculated so that this can zoom in" << endl;
+				}
+				else if (event.mouseButton.button == Mouse::Right)
+				{
+					//zoom out
+					cout << "Something should be calculated so that this can zoom out" << endl;
+				}
+			}
+
+			if (Keyboard::isKeyPressed(Keyboard::Escape))
+			{
+				window.close();
+			}
 		}
-		window.clear();
 		window.display();
 	}
     return 0;
