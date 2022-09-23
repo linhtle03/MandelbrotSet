@@ -63,12 +63,12 @@ int main ()
 				if (event.mouseButton.button == Mouse::Left)
 				{
 					//zoom in
-					cout << "Something should be calculated so that this can zoom in" << endl;
+					cout << "Left click detected: zooming in" << endl;
 				}
 				else if (event.mouseButton.button == Mouse::Right)
 				{
 					//zoom out
-					cout << "Something should be calculated so that this can zoom out" << endl;
+					cout << "Right click detected: zooming out" << endl;
 				}
 			}
 
