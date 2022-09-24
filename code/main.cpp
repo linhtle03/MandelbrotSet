@@ -82,10 +82,6 @@ int main ()
 	// Begin the main loop
     while (window.isOpen())
 	{
-		Vertex pointf(Vector2f(resolution.x, resolution.y), Color::Red);
-		window.draw(&pointf, 1, Points);
-		window.display();
-
 		Event event;
         while (window.pollEvent(event))
         {
