@@ -56,32 +56,33 @@ int main ()
     vector<VertexArray> vertexArrays;
 
 	// Create an enum class with CALCULATING and DISPLAYING, initialize to CALCULATING
-    for (double x = 0.0; x < 1.0; x += 0.01)
-	{
-		for (double y = 0.0; y < 1.0; y += 0.01)
-		{
-			double point_x = lerp(-2.0, 2.0, x);
-			double point_y = lerp(2.0, 2.0, y);
-			int iters = is_in_set(complex<double>(point_x,point_y));
-			if (iters == 0)
-			{
-				Vertex pointf(Vector2f(x * 1000, y *1000), Color::Red);
-                window.draw(&pointf, point_x, Points);
-				window.display();
-			}
-			else 
-			{
-				Vertex pointf(Vector2f(x * 1000, y *1000), Color::Green);
-                window.draw(&pointf, point_y, Points);
-				window.display();
-			}
-
-		}
-	}
-
+    
 	// Begin the main loop
     while (window.isOpen())
 	{
+		for (double x = 0.0; x < 1.0; x += 0.01)
+		{
+			for (double y = 0.0; y < 1.0; y += 0.01)
+			{
+				double point_x = lerp(-2.0, 2.0, x);
+				double point_y = lerp(2.0, 2.0, y);
+				int iters = is_in_set(complex<double>(point_x,point_y));
+				if (iters == 0)
+				{
+					Vertex pointf(Vector2f(x * 1000, y *1000), Color::Red);
+					window.draw(&pointf, aspectRatio, Points);
+					window.display();
+				}
+				else 
+				{
+					Vertex pointf(Vector2f(x * 1000, y *1000), Color::Green);
+					window.draw(&pointf, aspectRatio, Points);
+					window.display();
+				}
+
+			}
+		}
+
 		Event event;
         while (window.pollEvent(event))
         {
