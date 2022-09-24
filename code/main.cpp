@@ -2,11 +2,31 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <complex.h>
+#include <cmath>
 #include "ComplexPlane.h"
 
 // Make code easier to type with "using namespace"
 using namespace sf;
 using namespace std;
+
+float lerp(float a, float b, float t)
+{
+    return a + t * (b - a);
+}
+
+int is_in_set(complex<double> c)
+{
+	complex<double> z(0,0);
+	for (int i = 0; i < MAX_ITER; i++)
+	{
+		z = z * z + c;
+		if(abs(z) > 10)
+		{
+			return i;
+		}
+	}
+	return 0;
+}
 
 //Beginning program
 int main ()
@@ -35,8 +55,29 @@ int main ()
 	//Construct a VertexArray to draw color for each pixel
     vector<VertexArray> vertexArrays;
 
-    std::srand(time(0));
 	// Create an enum class with CALCULATING and DISPLAYING, initialize to CALCULATING
+    for (double x = 0.0; x < 1.0; x += 0.01)
+	{
+		for (double y = 0.0; y < 1.0; y += 0.01)
+		{
+			double point_x = lerp(-2.0, 2.0, x);
+			double point_y = lerp(2.0, 2.0, y);
+			int iters = is_in_set(complex<double>(point_x,point_y));
+			if (iters == 0)
+			{
+				Vertex pointf(Vector2f(x * 1000, y *1000), Color::Red);
+                window.draw(&pointf, point_x, Points);
+				window.display();
+			}
+			else 
+			{
+				Vertex pointf(Vector2f(x * 1000, y *1000), Color::Green);
+                window.draw(&pointf, point_y, Points);
+				window.display();
+			}
+
+		}
+	}
 
 	// Begin the main loop
     while (window.isOpen())
