@@ -101,11 +101,13 @@ int main ()
 				if (event.mouseButton.button == Mouse::Left)
 				{
 					//zoom in
+					void zoomIn();
 					cout << "Left click detected: zooming in" << endl;
 				}
 				else if (event.mouseButton.button == Mouse::Right)
 				{
 					//zoom out
+					void zoomOut();
 					cout << "Right click detected: zooming out" << endl;
 				}
 			}
@@ -152,7 +154,8 @@ int main ()
 		// Draw VertexArray
 
 		// Draw Text
-
+		//void loadText(Text& text);
+		
 		// Display
 		window.display();
 	}
